@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receipt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    .receipt {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .receipt h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .receipt .info, .receipt .totals {
+      margin-bottom: 20px;
+    }
+
+    .receipt .info p, .receipt .totals p {
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .receipt table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .receipt table th, .receipt table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .receipt .footer {
+      text-align: center;
+      font-size: 12px;
+      color: gray;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #2196f3;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #1976d2;
+    }
+
+    @media print {
+      button {
+        display: none;
+      }
+      body {
+        background: white;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="receipt" id="receipt">
+  <h2>Shop Name</h2>
+  <div class="info">
+    <p><strong>Date:</strong> <span id="date"></span></p>
+    <p><strong>Time:</strong> <span id="time"></span></p>
+    <p><strong>Receipt #:</strong> 001234</p>
+    <p><strong>Cashier:</strong> John Doe</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Apple</td>
+        <td>2</td>
+        <td>$1.00</td>
+        <td>$2.00</td>
+      </tr>
+      <tr>
+        <td>Banana</td>
+        <td>3</td>
+        <td>$0.50</td>
+        <td>$1.50</td>
+      </tr>
+      <tr>
+        <td>Milk</td>
+        <td>1</td>
+        <td>$2.00</td>
+        <td>$2.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <p><strong>Subtotal:</strong> <span>$5.50</span></p>
+    <p><strong>Tax (10%):</strong> <span>$0.55</span></p>
+    <p><strong>Total:</strong> <span>$6.05</span></p>
+  </div>
+
+  <div class="footer">
+    Thank you for your purchase!<br>
+    Visit again!
+  </div>
+</div>
+
+<button onclick="window.print()">Print Receipt</button>
+
+<script>
+  const now = new Date();
+  document.getElementById('date').textContent = now.toLocaleDateString();
+  document.getElementById('time').textContent = now.toLocaleTimeString();
+</script>
+
+</body>
+</html>
